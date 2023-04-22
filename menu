@@ -1,0 +1,54 @@
+#Función para mostrar el menú
+def mostrarMenu():
+    print("**************Bienvenido al sistema de información del zoológico***********")
+    print("1. Agregar animales")
+    print("2. Crear expediente")
+    print("3. Registrar anotaciones")
+    print("4. Apartar animales de mi zoológico")
+    print("5. Exportando la base de datos")
+    print("6. Mostrar la base de datos del zoológico")
+    print("7. Salir del sistema de información")
+
+#Ciclo para mostrar el menú de manera continua
+while True:
+    mostrarMenu()
+    opcion = input("Seleccione una opción: ")
+    
+    #Opción 1: Agregar animales
+    if opcion == "1":
+        #Inserte aquí el código para agregar animales al zoológico
+        print("Animales agregados correctamente")
+    
+    #Opción 2: Crear expediente
+    elif opcion == "2":
+        #Inserte aquí el código para crear expedientes de animales en el zoológico
+        print("Expediente creado correctamente")
+    
+    #Opción 3: Registrar anotaciones
+    elif opcion == "3":
+        #Inserte aquí el código para registrar anotaciones de animales en el zoológico
+        print("Anotaciones registradas correctamente")
+    
+    #Opción 4: Apartar animales de mi zoológico
+    elif opcion == "4":
+        #Inserte aquí el código para apartar animales del zoológico
+        print("Animales apartados correctamente")
+    
+    #Opción 5: Exportando la base de datos
+    elif opcion == "5":
+        #Inserte aquí el código para exportar la base de datos del zoológico
+        print("Base de datos exportada correctamente")
+    
+    #Opción 6: Mostrar la base de datos del zoológico
+    elif opcion == "6":
+        #Inserte aquí el código para mostrar la base de datos del zoológico
+        print("Base de datos mostrada correctamente")
+    
+    #Opción 7: Salir del sistema de Información
+    elif opcion == "7":
+        print("Gracias por utilizar el sistema de información del zoológico")
+        break
+    
+    #Opción inválida: Si la opción ingresada no está dentro del menú
+    else:
+        print("Opción inválida, por favor seleccione una opción válida")
