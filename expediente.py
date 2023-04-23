@@ -1,25 +1,27 @@
 import wikipedia
+import webbrowser
 
-def buscar_animal():
-    animales=["oso panda","ballena azul","pepino de mar", "langosta","leon","elefante africano"]
+def expediente():
+    animales=["oso panda","ballena azul","pepino de mar", "nutria","leon","elefante africano"]
     print("Lista de animales:")
     for i, animal in enumerate(animales):
-        print(f"{i+1}. {animal}")
-    while True:
-        try:
-            opcion = int(input("Seleccione el número del animal que desea buscar: "))
-            if opcion < 1 or opcion > len(animales):
-                raise ValueError()
-            break
-        except ValueError:
-            print("Ingrese un número válido.")
-    animal = animales[opcion-1]
-    pagina = wikipedia.page(animal)
-    print("Título: ", pagina.title)
-    print("URL: ", pagina.url)
-    resumen = pagina.summary.replace('\n','')
-    resumen = re.sub(r'\[\d+\]', '', resumen)
-    print("Resumen: ", resumen)
-    imagen = pagina.images[0]
-    print("Imagen: ", imagen)
-    return [animal, pagina.title, pagina.url, resumen, []]
+        print(f"{i + 1}. {animal}")
+    animalSeleccionado = int(input("Seleccione un animal: ")) - 1
+    nombreAnimal = animales[animalSeleccionado]
+    print(f"\nInformación de {nombreAnimal}:\n")
+    try:
+        wikipedia.set_lang("es")
+        pagina = wikipedia.page(nombreAnimal)
+        titulo = pagina.title
+        url = pagina.url
+        resumen = wikipedia.summary(nombreAnimal, sentences=2)
+        imagenUrl = pagina.images[0]
+        webbrowser.open(imagenUrl)
+        anotaciones = []
+        animal = [nombreAnimal, titulo, url, resumen, anotaciones]
+        #print(animal)
+        return animal
+    except wikipedia.exceptions.PageError:
+        print(f"No se encontró la página de Wikipedia para {nombreAnimal}.")
+    except wikipedia.exceptions.DisambiguationError:
+        print(f"La búsqueda de {nombreAnimal} es ambigua. Por favor, sea más específico.")
