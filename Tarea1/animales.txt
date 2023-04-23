@@ -1,0 +1,22 @@
+Calamar	Foca
+Pez león
+Ballena franca
+Anguila eléctrica
+Pepino de mar
+Sardinas
+Manati
+Pulpo
+Pez arquero
+Pez sapo peludo
+Camello
+Lobo
+Topo
+Liebre
+Pantera
+Gallina
+Gato
+Perro
+Tarántula
+Oveja
+
+
