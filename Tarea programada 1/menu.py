@@ -30,7 +30,7 @@ def main():
             elif opcion == 3:
                 return agregarAnotaciones2()
             elif opcion == 4:
-                return apartarAnimales()
+                return "apartar animales"
             else:
                 break
         else:

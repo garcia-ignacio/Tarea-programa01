@@ -2,105 +2,97 @@ import random
 import wikipedia
 import webbrowser
 
+#Funcion para darle un nombre al zoo y agregar animales al mismo
 def agregarAnimales():
     nombreZoo = input("Ingrese un nombre para su zoológico: ")
     try:
-        with open('animales.txt', 'r') as f:
-            animales = f.read().splitlines()
+        with open('animales.txt', 'r') as f: #se intenta abrir el archivo, Si el archivo no existe, se imprime un mensaje de error y se asigna una lista vacía a la variable animales.
+            animales = f.read().splitlines() #si el archivo existe se lee usando read() y se divide en una lista de líneas utilizando el método splitlines()
     except FileNotFoundError:
         print("No se pudo encontrar el archivo de animales.")
         animales = []
     
-    numAnimales = input("Ingrese la cantidad de animales que desea agregar: ")
+    numAnimales = input("Ingrese la cantidad de animales que desea agregar: ") #se ingresan la cantidad de animales
     try:
-        numAnimales = int(numAnimales)
+        numAnimales = int(numAnimales) # se intenta convertir a entero y si no se puede tira error
     except ValueError:
         print("Ingrese un número válido.")
         return
     
-    if numAnimales > len(animales):
+    if numAnimales > len(animales): #verifica si la cantidad de animales que el usuario desea agregar es mayor que la cantidad de animales disponibles en la lista, si no tira error
         print(f"No hay suficientes animales en la lista. Hay {len(animales)} animales disponibles.")
         return
     
-    random.shuffle(animales)
+    random.shuffle(animales) #Si hay suficientes animales en la lista se reorganiza aleatoriamente la lista utilizando la función random.shuffle
     animalesZoo = animales[:numAnimales]
     
     print(f"Los siguientes animales han sido agregados a {nombreZoo}:")
     for animal in animalesZoo:
-        print(animal)
+        print(animal) #se imprimen los animales seleccionados
     
-    return animalesZoo
+    return #animalesZoo
 
+####################################################################################################
+
+#Funcion para crear expediente para los animales del zoo
 
 def expediente(animales):
     print("Lista de animales:")
     for i, animal in enumerate(animales):
-        print(f"{i + 1}. {animal}")
-    animalSeleccionado = int(input("Seleccione un animal: ")) - 1
-    nombreAnimal = animales[animalSeleccionado]
+        print(f"{i + 1}. {animal}") #muestra los nombres de los animales en la lista
+    animalSeleccionado = int(input("Seleccione un animal: ")) - 1 # se selecciona un animal para generar un expediente
+    nombreAnimal = animales[animalSeleccionado] #se almacena el nombre del animal seleccionado
     print(f"\nInformación de {nombreAnimal}:\n")
     try:
-        wikipedia.set_lang("es")
-        pagina = wikipedia.page(nombreAnimal)
-        titulo = pagina.title
-        url = pagina.url
-        resumen = wikipedia.summary(nombreAnimal, sentences=2)
+        wikipedia.set_lang("es") #se intenta obtener información sobre el animal de Wikipedia en español
+        pagina = wikipedia.page(nombreAnimal) # se almacena la pagina
+        titulo = pagina.title # se almacena el titulo de la pagina
+        url = pagina.url #se almacena el url de la pagina
+        resumen = wikipedia.summary(nombreAnimal, sentences=2) # se almacena una un resumen sobre el animal
         imagenUrl = pagina.images[0]
-        webbrowser.open(imagenUrl)
-        anotaciones = []
-        animal = [nombreAnimal, titulo, url, resumen, anotaciones]
+        webbrowser.open(imagenUrl) # se abre la primera imagen de la página de Wikipedia en un navegador web utilizando la biblioteca webbrowser y el método open()
+        anotaciones = [] #se crea una variable llamada anotaciones para futuras anotaciones
+        animal = [nombreAnimal, titulo, url, resumen, anotaciones] #y se almacena todo en una lista en la variable animal
         #print(animal)
-        return animal
+        return animal #retorna toda la informacion obtenida
     except wikipedia.exceptions.PageError:
-        print(f"No se encontró la página de Wikipedia para {nombreAnimal}.")
+        print(f"No se encontró la página de Wikipedia para {nombreAnimal}.")  #se muestran errores si no encuentra la pagina
     except wikipedia.exceptions.DisambiguationError:
         print(f"La búsqueda de {nombreAnimal} es ambigua. Por favor, sea más específico.")
         
-def expedienteAux():
+def expedienteAux(): #se crea una funcion para conectar expediente con la funcion agregarAnimales
     listaAnimales = agregarAnimales()
     expediente(listaAnimales)
 
+######################################################################################################
 
-def agregarAnotacion(animal):
-    anotaciones = animal[-1]
+#Funcion para agregar anotacione a los expedientes de los animales
+def agregarAnotacion(animal): # recibe una lista, en este caso el expediente creado
+    anotaciones = animal[-1] # se va al final de la lista donde estan las anotaciones
     while True:
-        anotacion = input("Ingrese una anotación para este animal (o escriba 'fin' para terminar): ")
+        anotacion = input("Ingrese una anotación para este animal (o escriba 'fin' para terminar): ") #se agregan anotaciones hasta que el usuario quiera parar
         if anotacion.lower() == 'fin':
             break
         else:
             anotaciones.append(anotacion)
     animal[-1] = anotaciones
-    return animal
+    return animal #se retorna el expediente actualizado
 
-def agregarAnotaciones2():
+def agregarAnotacionesAux():
     while True:
-        animal = expediente()
-        animal = agregarAnotacion(animal)
+        animal = expediente() #llama a la funcion expediente para elegir un animal
+        animal = agregarAnotacion(animal) #permite al usuario añadir nuevas anotaciones
         print(animal)
 
-        continuar = input("¿Desea agregar anotaciones para otro animal? (s/n): ")
+        continuar = input("¿Desea agregar anotaciones para otro animal? (s/n): ") #pregunta si quiere añadir anotaciones para otro animal
         if continuar.lower() == 'n':
-            break
+           break
 
-def apartarAnimales():
-    cantidadAnimales=int(input("ingrese la cantidad de animales que será posible atender: "))
-    animales = ["oso panda", "ballena azul", "pepino de mar", "nutria", "leon", "elefante africano"]
-    if cantidadAnimales >= len(animales):
-        print("No hay animales para retirar.")
-        return animales
-    
-    animalesRetirados = random.sample(animales, cantidadAnimales)
-    for animal in animalesRetirados:
-        animales.remove(animal)
-    
-    print(f"Los siguientes animales han sido retirados del zoológico: {', '.join(animalesRetirados)}")
-    print(f"Los siguientes animales son los únicos que se pueden atender ahora: {', '.join(animales)}")
-    
-    return animales
+#####################################################################################################
 
-def apartarAnimales():
-    listaAnimales = agregarAnimales()
-    apartarAnimales(listaAnimales)  
+
+    
+ 
 
         
 

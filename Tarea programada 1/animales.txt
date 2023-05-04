@@ -1,22 +1,77 @@
-Calamar	Foca
-Pez león
-Ballena franca
-Anguila eléctrica
-Pepino de mar
-Sardinas
-Manati
-Pulpo
-Pez arquero
-Pez sapo peludo
-Camello
-Lobo
-Topo
-Liebre
-Pantera
-Gallina
-Gato
-Perro
-Tarántula
-Oveja
+Leon Africano
+Oso Polar
+Chachalaca
+Aguila Real
+Loro Cabeza Amarilla
+Tigre de Bengala
+Jirafa Reticulada
+Escorpion
+Cacomixtle Tropical
+Elefante Africano
+Panda Rojo
+Canguro Rojo
+Tucan
+Bisonte Americano
+Nutria Marina
+Orca
+Camaleon
+Chimpance Comun
+Gorila Oriental
+Lemur de Cola Anillada
+Zorro Polar
+Ciervo de cola blanca
+Cebra de Grevy
+Buitre leonado
+Lobo gris
+Ardilla voladora del norte
+Armadillo gigante
+Ocelote
+Lince Iberico
+Puma
+Coyote
+Boa Constrictor
+Cobra Real
+Cocodrilo de agua salada
+Gecko leopardo
+Iguana Verde
+Abeja melífera europea
+Cucaracha Americana
+Escarabajo Japonés
+Gusano de seda
+Tarantula
+Pulpo de anillos azules
+Medusa luna
+Anémona de mar
+Cangrejo ermitaño
+Lince canadiense
+Aguila Harpia
+Pato mandarin
+Urraca azul
+Grulla Coronada
+Cebra de Montaña
+Capibara
+Armadillo de Nueve Bandas
+Pez Globo
+Tiburón Blanco
+Carpa Koi
+Pez Payaso
+Pez ángel
+Salamandra
+Gecko Tokay
+Cobra de monocle
+Langosta espinosa
+Cangrejo herradura
+Camaron mantis
+Pez león rojo
+Caiman negro
+Anaconda verde
+Serpiente de cascabel de diamante del este
+Tapir de montaña
+Orangutan de Sumatra
+Mono Araña
+Colobo rojo
+Uakari
+Delfin Mular
+Manati Amazónico
 
 
