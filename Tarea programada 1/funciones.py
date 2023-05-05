@@ -1,6 +1,7 @@
 import random
 import wikipedia
 import webbrowser
+import xml.etree.ElementTree as ET
 
 #Funcion para darle un nombre al zoo y agregar animales al mismo
 def agregarAnimales():
@@ -90,9 +91,45 @@ def agregarAnotacionesAux():
 
 #####################################################################################################
 
+#Funcion para exportar la base de datos
 
+def exportarBaseDeDatos():
+    # Obtener la cantidad de animales a exportar
+    cantidadAnimales = int(input("Ingrese la cantidad de animales a exportar: "))
     
- 
+    # Obtener el nombre del archivo de salida
+    nombreArchivo = input("Ingrese el nombre del archivo de salida: ")
+    nombreArchivo += ".xml"
+    
+    # Verificar si el archivo ya existe
+    try:
+        with open(nombreArchivo, 'r'):
+            print("El archivo ya existe. Por favor, seleccione otro nombre.")
+            return
+    except FileNotFoundError:
+        pass
+    
+    # Crear el elemento raíz
+    raiz = ET.Element("animales")
+    
+    # Obtener la lista de animales
+    animales=["oso panda", "ballena azul", "pepino de mar", "nutria", "leon africano", "elefante africano"]
+    
+    # Seleccionar animales aleatorios
+    animalesSeleccionados = random.sample(animales, cantidadAnimales)
+    
+    # Agregar subelementos para cada animal
+    for animal in animalesSeleccionados:
+        anotaciones = []#agregarAnotacion([animal])
+        animalElemento = ET.SubElement(raiz, "animal", nombre=animal, anotaciones=str(anotaciones))
+    
+    # Guardar el archivo
+    tree = ET.ElementTree(raiz)
+    tree.write(nombreArchivo)
+    
+    print(f"Se ha exportado la base de datos de {cantidadAnimales} animales en el archivo {nombreArchivo}.")
+
+
 
         
 
