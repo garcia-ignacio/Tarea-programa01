@@ -1,3 +1,11 @@
+#Elaborado por:
+#Jose Carlos Castrillo Figueroa
+#Ignacio Garcia.
+#fecha de creación: 04/16/2023 
+#Ultima modificación: 05/05/2023 
+#versión: 3.11.2
+
+#se importan las funciones
 from funciones import *
 
 
@@ -35,6 +43,8 @@ def menu():
                     print("Primero debe agregar animales.")
             elif opcion == 3:
                 agregarAnotacionesAux(expediente(animalesSeleccionados))
+            elif opcion == 4:
+                apatarAnimales(animalesSeleccionados)
             elif opcion == 5:
                 exportarBaseDeDatos(animalesSeleccionados)
             elif opcion == 6:

@@ -1,3 +1,11 @@
+#Elaborado por:
+#Jose Carlos Castrillo Figueroa
+#Ignacio Garcia.
+#fecha de creación: 04/16/2023 
+#Ultima modificación: 05/05/2023 
+#versión: 3.11.2
+
+#Se importan librerias
 import random
 import wikipedia
 import webbrowser
@@ -111,6 +119,34 @@ def agregarAnotacionesAux(b):
         continuar = input("¿Desea agregar anotaciones para otro animal? (s/n): ") #pregunta si quiere añadir anotaciones para otro animal
         if continuar.lower() == 'n':
            break
+
+###################################################################################################
+
+def apatarAnimales(animales):
+    # Obtener el número máximo de animales que puede mantener el zoo
+    numMaxAnimales = input("Ingrese el número máximo de animales que puede mantener el zoo: ")
+    try:
+        numMaxAnimales = int(numMaxAnimales)
+    except ValueError:
+        print("Ingrese un número válido.")
+        return []
+    
+    # Verificar si es posible mantener a todos los animales
+    if len(animales) <= numMaxAnimales:
+        print("El número máximo de animales es igual o mayor al número de animales existentes en el zoo. No es necesario eliminar animales.")
+        return animales
+    
+    # Seleccionar animales aleatorios para eliminar
+    animalesEliminar = random.sample(animales, len(animales) - numMaxAnimales)
+    
+    # Eliminar animales seleccionados
+    for animal in animalesEliminar:
+        animales.remove(animal)
+    
+    print(f"Se han eliminado {len(animalesEliminar)} animales aleatoriamente.")
+    print("los animales que continuan son: ",animales)
+    return animales
+
 
 ###################################################################################################
         
