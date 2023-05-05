@@ -2,6 +2,8 @@ import random
 import wikipedia
 import webbrowser
 import xml.etree.ElementTree as ET
+import sys
+import picke
 
 #Funcion para darle un nombre al zoo y agregar animales al mismo
 def agregarAnimales():
@@ -128,6 +130,16 @@ def exportarBaseDeDatos():
     tree.write(nombreArchivo)
     
     print(f"Se ha exportado la base de datos de {cantidadAnimales} animales en el archivo {nombreArchivo}.")
+   
+#####################################################################################################################################
+#Salir del sistema de informacion.
+print("La biodiversidad es la base de la vida en nuestro planeta. Cada especie, por pequeña que sea, desempeña un papel vital en el equilibrio de los ecosistemas. Preservar las especies es nuestra responsabilidad, para asegurar un futuro sostenible para nosotros y para las generaciones venideras.")
+# Salir del programa
+sys.exit()
+
+# Guardar la matriz en un archivo binario
+with open("matriz_animales.pkl", "wb") as archivo:
+    pickle.dump(matriz_animales, archivo)
 
 
 
