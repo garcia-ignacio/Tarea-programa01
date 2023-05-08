@@ -1,6 +1,6 @@
 import re
 import random
-
+#NOTA: tambien me hace falta documentar el codigo.
 def registrar_persona():
     datos_personas = {}
     while True:
